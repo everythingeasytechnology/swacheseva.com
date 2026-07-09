@@ -1,0 +1,14 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E4F0FF" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#heroGrad)" />
+  <circle cx="175" cy="155" r="140" fill="rgba(254, 123, 1, 0.12)" />
+  <circle cx="950" cy="110" r="155" fill="rgba(0, 41, 132, 0.16)" />
+  <circle cx="1080" cy="540" r="220" fill="rgba(254, 123, 1, 0.08)" />
+  <path d="M0 660C220 600 430 690 700 640C980 590 1120 740 1200 760V800H0V660Z" fill="rgba(0, 41, 132, 0.08)" />
+  <path d="M1200 450C980 390 780 490 540 430C320 370 200 520 0 450V800H1200V450Z" fill="rgba(254, 123, 1, 0.06)" />
+</svg>
