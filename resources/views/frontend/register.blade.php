@@ -41,11 +41,8 @@
         <div class="col-lg-6 d-flex align-items-center justify-content-center bg-light">
             <div class="p-5 w-100" style="max-width: 540px;">
                 <div class="mb-4 text-center text-lg-start">
-                    <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none justify-content-center justify-content-lg-start mb-3">
-                        <div class="bg-primary-theme p-2 rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
-                            <i class="bi bi-person-workspace text-white"></i>
-                        </div>
-                        <span class="fw-bold fs-5 text-primary-theme">Swacheseva</span>
+                    <a href="{{ route('home') }}" class="d-inline-block mb-3">
+                        <img src="{{ asset('bk-logo.png') }}" alt="Swacheseva Logo" style="height: 60px; width: auto; object-fit: contain;">
                     </a>
                     <h3 class="fw-bold text-primary-theme mb-1">Centre Application Form</h3>
                     <p class="text-muted small">Establish your franchise under Youth Employment Service</p>
