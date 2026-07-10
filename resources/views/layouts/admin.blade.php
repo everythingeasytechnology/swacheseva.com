@@ -42,8 +42,9 @@
             </div>
 
             <!-- Admin Footer -->
-            <footer class="py-3 px-4 bg-white border-top text-center mt-auto text-muted small">
-                &copy; {{ date('Y') }} <strong>Swacheseva Admin Panel</strong>. All Rights Reserved.
+            <footer class="py-3 px-4 bg-white border-top d-flex flex-wrap justify-content-between align-items-center mt-auto text-muted small">
+                <span>&copy; {{ date('Y') }} <strong>Swacheseva Admin Panel</strong>. All Rights Reserved.</span>
+                <span>Design by <a href="http://everythingeasy.in/" target="_blank" class="text-primary text-decoration-none fw-bold"><i class="bi bi-globe me-1"></i>Everything Easy</a></span>
             </footer>
         </div>
     </div>

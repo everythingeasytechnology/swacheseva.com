@@ -73,7 +73,7 @@
                 <p class="mb-0 text-white-50 small">&copy; {{ date('Y') }} Swacheseva Initiative. All Rights Reserved.</p>
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <p class="mb-0 text-white-50 small">Design by <a href="http://everythingeasy.in/" target="_blank" class="text-secondary-theme text-decoration-none fw-bold">Everything Easy</a></p>
+                <p class="mb-0 text-white-50 small">Design by <a href="http://everythingeasy.in/" target="_blank" class="text-secondary-theme text-decoration-none fw-bold"><i class="bi bi-globe me-1"></i>Everything Easy</a></p>
             </div>
         </div>
     </div>
