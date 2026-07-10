@@ -6,25 +6,8 @@
 <div class="container-fluid px-0">
     <div class="row g-0 min-vh-100">
         <!-- Left Side: Theme Graphic -->
-        <div class="col-lg-6 d-none d-lg-flex bg-primary-theme align-items-center justify-content-center text-white position-relative overflow-hidden" style="background: #002984;">
-            <div class="position-absolute opacity-10 end-0 top-0" style="font-size: 25rem; transform: translate(30%, -20%);">
-                <i class="bi bi-person-workspace text-white"></i>
-            </div>
-            
-            <div class="p-5 text-center position-relative" style="max-width: 500px; z-index: 10;">
-                <div class="bg-white p-3 rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow" style="width: 80px; height: 80px;">
-                    <i class="bi bi-person-workspace text-primary-theme fs-1"></i>
-                </div>
-                <h2 class="fw-bold mb-3">Swacheseva Portal</h2>
-                <p class="text-white-50 lead fs-6 mb-4">
-                    Access your personalized applicant dashboard to check scheme request status, update career training profiles, and download notifications.
-                </p>
-                <div class="bg-white bg-opacity-10 p-3 rounded-3 border border-white-10 text-start">
-                    <p class="mb-1 text-secondary-theme fw-bold small"><i class="bi bi-info-circle me-1"></i> MOCK LOGIN DETAILS</p>
-                    <p class="mb-0 text-white-50 small"><strong>Admin:</strong> admin@swacheseva.com / admin123</p>
-                    <p class="mb-0 text-white-50 small"><strong>User:</strong> user@swacheseva.com / user123</p>
-                </div>
-            </div>
+        <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center position-relative overflow-hidden" style="background: #002984;">
+            <img src="{{ asset('login.png') }}" alt="Swacheseva Portal" style="max-width: 100%; max-height: 100%; object-fit: contain;">
         </div>
 
         <!-- Right Side: Login Form -->
@@ -38,28 +21,45 @@
                     <p class="text-muted small">Please sign in to access your portal</p>
                 </div>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-3" role="alert">
+                        <ul class="mb-0 small ps-3">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show rounded-3 mb-3" role="alert">
+                        <span class="small"><i class="bi bi-check-circle-fill me-1"></i> {{ session('success') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <x-card :hover="false" class="p-4 bg-white border shadow-sm">
-                    <!-- Target logins to user or admin dashboard for demonstration purposes -->
-                    <form action="#" method="GET" id="loginForm">
+                    <form action="{{ route('login.submit') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label text-muted small fw-bold">Email Address</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-0"><i class="bi bi-envelope text-muted"></i></span>
-                                <input type="email" id="email" class="form-control bg-light border-0 py-2" placeholder="user@swacheseva.com" required>
+                                <input type="email" name="email" id="email" class="form-control bg-light border-0 py-2" placeholder="user@swacheseva.com" value="{{ old('email') }}" required>
                             </div>
                         </div>
                         <div class="mb-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <label for="password" class="form-label text-muted small fw-bold mb-0">Password</label>
-                                <a href="#" class="text-secondary-theme text-decoration-none small">Forgot Password?</a>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-0"><i class="bi bi-shield-lock text-muted"></i></span>
-                                <input type="password" id="password" class="form-control bg-light border-0 py-2" placeholder="••••••••" required>
+                                <input type="password" name="password" id="password" class="form-control bg-light border-0 py-2" placeholder="••••••••" required>
                             </div>
                         </div>
                         <div class="mb-4 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <input type="checkbox" name="remember" class="form-check-input" id="rememberMe">
                             <label class="form-check-label text-muted small" for="rememberMe">Remember my session</label>
                         </div>
                         
@@ -74,22 +74,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Demo routing helper to simulate redirects depending on input
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('loginForm');
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const emailInput = document.getElementById('email').value.trim().toLowerCase();
-                if (emailInput.includes('admin')) {
-                    window.location.href = "{{ route('admin.dashboard') }}";
-                } else {
-                    window.location.href = "{{ route('user.dashboard') }}";
-                }
-            });
-        }
-    });
-</script>
 @endsection

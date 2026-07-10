@@ -16,36 +16,55 @@
     <!-- Support details and Form -->
     <section class="py-5 bg-light">
         <div class="container py-4">
+            <!-- Flash Message Alerts -->
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show rounded-3 p-3 mb-4 shadow-sm" role="alert">
+                    <span class="small"><i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show rounded-3 p-3 mb-4 shadow-sm" role="alert">
+                    <ul class="mb-0 small">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="row g-4">
                 <!-- Info cards -->
                 <div class="col-lg-4">
                     <x-card :hover="true" class="mb-3 d-flex align-items-center gap-3">
-                        <div class="bg-primary-theme bg-opacity-10 text-primary-theme p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0;">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0; background-color: #e7f1ff; border: 2px solid #0d6efd; color: #0d6efd;">
                             <i class="bi bi-telephone-fill fs-5"></i>
                         </div>
                         <div>
                             <h6 class="fw-bold mb-0 text-primary-theme">Phone Support</h6>
-                            <p class="text-muted small mb-0">+91 123 456 7890</p>
+                            <p class="text-muted small mb-0">{{ \App\Models\Setting::get('website_phone', '+91 9154252555') }}</p>
                         </div>
                     </x-card>
 
                     <x-card :hover="true" class="mb-3 d-flex align-items-center gap-3">
-                        <div class="bg-primary-theme bg-opacity-10 text-primary-theme p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0;">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0; background-color: #e7f1ff; border: 2px solid #0d6efd; color: #0d6efd;">
                             <i class="bi bi-envelope-fill fs-5"></i>
                         </div>
                         <div>
                             <h6 class="fw-bold mb-0 text-primary-theme">Email Address</h6>
-                            <p class="text-muted small mb-0">support@swacheseva.com</p>
+                            <p class="text-muted small mb-0">{{ \App\Models\Setting::get('website_email', 'care@swacheseva.com') }}</p>
                         </div>
                     </x-card>
 
                     <x-card :hover="true" class="mb-3 d-flex align-items-center gap-3">
-                        <div class="bg-primary-theme bg-opacity-10 text-primary-theme p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0;">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; flex-shrink: 0; background-color: #e7f1ff; border: 2px solid #0d6efd; color: #0d6efd;">
                             <i class="bi bi-geo-alt-fill fs-5"></i>
                         </div>
                         <div>
                             <h6 class="fw-bold mb-0 text-primary-theme">Main Office</h6>
-                            <p class="text-muted small mb-0">Connaught Place, New Delhi</p>
+                            <p class="text-muted small mb-0">{{ \App\Models\Setting::get('website_address', '123, Swacheseva Bhawan, Sansad Marg, Connaught Place, New Delhi - 110001') }}</p>
                         </div>
                     </x-card>
                 </div>
@@ -53,30 +72,25 @@
                 <!-- Contact Form -->
                 <div class="col-lg-8">
                     <x-card :hover="false" class="p-4" title="Send a Message">
-                        <form>
+                        <form action="{{ route('contact.submit') }}" method="POST">
+                            @csrf
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
-                                    <label class="form-label text-muted small fw-bold">Full Name</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Rahul Kumar" required>
+                                    <label for="c_name" class="form-label text-muted small fw-bold">Full Name</label>
+                                    <input type="text" name="name" id="c_name" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Rahul Kumar" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label text-muted small fw-bold">Email Address</label>
-                                    <input type="email" class="form-control bg-light border-0 py-2 rounded-3" placeholder="rahul@example.com" required>
+                                    <label for="c_email" class="form-label text-muted small fw-bold">Email Address</label>
+                                    <input type="email" name="email" id="c_email" class="form-control bg-light border-0 py-2 rounded-3" placeholder="rahul@example.com" value="{{ old('email') }}" required>
                                 </div>
                             </div>
-                            <div class="row g-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label text-muted small fw-bold">Phone Number</label>
-                                    <input type="tel" class="form-control bg-light border-0 py-2 rounded-3" placeholder="9876543210" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label text-muted small fw-bold">Subject</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Scheme Application Help" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="c_subject" class="form-label text-muted small fw-bold">Subject</label>
+                                <input type="text" name="subject" id="c_subject" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Scheme Application Help" value="{{ old('subject') }}" required>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label text-muted small fw-bold">Message Details</label>
-                                <textarea rows="5" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Type your message here..." required></textarea>
+                                <label for="c_message" class="form-label text-muted small fw-bold">Message Details</label>
+                                <textarea name="message" id="c_message" rows="5" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Type your message here..." required>{{ old('message') }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary px-5 shadow-sm">Send message <i class="bi bi-send ms-2"></i></button>
                         </form>

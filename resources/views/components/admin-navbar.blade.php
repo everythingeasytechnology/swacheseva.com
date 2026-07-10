@@ -29,10 +29,10 @@
             <!-- User Info & Avatar Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center p-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile avatar" class="rounded-circle border" style="width: 36px; height: 36px; object-fit: cover;">
+                    <img src="{{ Auth::user()->avatar ? (Str::startsWith(Auth::user()->avatar, ['http://', 'https://']) ? Auth::user()->avatar : asset(Auth::user()->avatar)) : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' }}" alt="Profile avatar" class="rounded-circle border" style="width: 36px; height: 36px; object-fit: cover;">
                     <div class="ms-2 d-none d-lg-block text-start leading-none" style="margin-top: 2px;">
-                        <span class="fw-bold text-dark fs-8 d-block" style="font-size: 0.85rem;">Rahul Kumar</span>
-                        <small class="text-muted fs-9 d-block" style="font-size: 0.7rem; margin-top: -3px;">Verified Applicant</small>
+                        <span class="fw-bold text-dark fs-8 d-block" style="font-size: 0.85rem;">{{ Auth::user()->name ?? 'Super Administrator' }}</span>
+                        <small class="text-muted fs-9 d-block" style="font-size: 0.7rem; margin-top: -3px;">{{ Auth::user()->role === 'admin' ? 'Super Admin' : 'Candidate' }}</small>
                     </div>
                 </a>
                 
@@ -58,10 +58,13 @@
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center py-2 text-danger" href="{{ route('home') }}">
+                        <a class="dropdown-item d-flex align-items-center py-2 text-danger" href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('navbar-logout-form').submit();">
                             <i class="bi bi-box-arrow-left me-2"></i>
                             <span>Logout</span>
                         </a>
+                        <form id="navbar-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                 </ul>
             </li>

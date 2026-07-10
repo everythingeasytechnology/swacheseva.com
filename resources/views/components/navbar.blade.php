@@ -2,7 +2,7 @@
 <div class="bg-primary-theme py-2 text-white text-opacity-85" style="font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: #002984 !important;">
     <div class="container d-flex justify-content-between align-items-center">
         <div>
-            <i class="bi bi-envelope-fill me-1 text-secondary-theme"></i> Mail us : swacheseva@gmail.com <span class="mx-2">|</span> care@swacheseva.com
+            <i class="bi bi-envelope-fill me-1 text-secondary-theme"></i> Mail us : {{ \App\Models\Setting::get('website_email_secondary', 'swacheseva@gmail.com') }} <span class="mx-2">|</span> {{ \App\Models\Setting::get('website_email', 'care@swacheseva.com') }}
         </div>
         <div class="d-flex align-items-center gap-3">
             <span><i class="bi bi-clock-fill me-1 text-secondary-theme"></i> Opening Hours : Monday - Friday: 10:00AM to 5:00PM</span>

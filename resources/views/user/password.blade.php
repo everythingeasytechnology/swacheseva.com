@@ -8,29 +8,49 @@
     <!-- Password form -->
     <div class="row g-custom mb-custom">
         <div class="col-lg-6">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show rounded-3 mb-3" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-3" role="alert">
+                    <ul class="mb-0 small">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <x-card :hover="false" title="Security Settings" class="bg-white border-0 shadow-sm">
-                <form>
+                <form action="{{ route('user.password.update') }}" method="POST">
+                    @csrf
+                    
                     <div class="mb-3">
-                        <label class="form-label text-muted small fw-bold">Current Password</label>
+                        <label for="current_password" class="form-label text-muted small fw-bold">Current Password</label>
                         <div class="input-group">
                             <span class="input-group-text bg-light border-0"><i class="bi bi-key-fill text-muted"></i></span>
-                            <input type="password" class="form-control bg-light border-0 py-2" placeholder="Enter current password" required>
+                            <input type="password" name="current_password" id="current_password" class="form-control bg-light border-0 py-2" placeholder="Enter current password" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label text-muted small fw-bold">New Password</label>
+                        <label for="password" class="form-label text-muted small fw-bold">New Password</label>
                         <div class="input-group">
                             <span class="input-group-text bg-light border-0"><i class="bi bi-shield-lock-fill text-muted"></i></span>
-                            <input type="password" class="form-control bg-light border-0 py-2" placeholder="Enter new password" required>
+                            <input type="password" name="password" id="password" class="form-control bg-light border-0 py-2" placeholder="Enter new password" required>
                         </div>
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label text-muted small fw-bold">Confirm New Password</label>
+                        <label for="password_confirmation" class="form-label text-muted small fw-bold">Confirm New Password</label>
                         <div class="input-group">
                             <span class="input-group-text bg-light border-0"><i class="bi bi-shield-lock-fill text-muted"></i></span>
-                            <input type="password" class="form-control bg-light border-0 py-2" placeholder="Re-enter new password" required>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control bg-light border-0 py-2" placeholder="Re-enter new password" required>
                         </div>
                     </div>
 

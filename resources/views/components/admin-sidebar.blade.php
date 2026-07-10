@@ -34,6 +34,12 @@
                 <span>Blogs</span>
             </a>
         </li>
+        <li class="sidebar-item">
+            <a href="{{ route('admin.messages') }}" class="sidebar-link {{ Route::currentRouteName() == 'admin.messages' ? 'active' : '' }}">
+                <i class="bi bi-chat-left-text-fill"></i>
+                <span>Support Queries</span>
+            </a>
+        </li>
 
         <li class="sidebar-item">
             <a href="{{ route('admin.settings') }}" class="sidebar-link {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}">
@@ -45,9 +51,12 @@
 
     <!-- Sidebar Bottom Action -->
     <div class="sidebar-item mt-auto mb-4">
-        <a href="{{ route('home') }}" class="sidebar-link text-white-50 hover-white">
+        <a href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="sidebar-link text-white-50 hover-white">
             <i class="bi bi-box-arrow-left"></i>
             <span>Logout</span>
         </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
 </aside>

@@ -8,15 +8,15 @@
         <!-- Background Slideshow Carousel -->
         <div id="heroBgCarousel" class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" data-bs-interval="4000" style="z-index: 1;">
             <div class="carousel-inner h-100">
-                <div class="carousel-item active h-100">
-                    <img src="{{ asset('hero-india.jpg') }}" class="d-block w-100 h-100" alt="Empowerment Banner" style="object-fit: cover; object-position: center right;">
-                </div>
-                <div class="carousel-item h-100">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" class="d-block w-100 h-100" alt="Youth Education" style="object-fit: cover; object-position: center right;">
-                </div>
-                <div class="carousel-item h-100">
-                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097798?auto=format&fit=crop&w=1200&q=80" class="d-block w-100 h-100" alt="Skill Development" style="object-fit: cover; object-position: center right;">
-                </div>
+                @forelse($slides as $index => $slide)
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }} h-100">
+                        <img src="{{ Str::startsWith($slide->image_path, ['http://', 'https://']) ? $slide->image_path : asset($slide->image_path) }}" class="d-block w-100 h-100" alt="{{ $slide->caption ?? 'Slide' }}" style="object-fit: cover; object-position: center right;">
+                    </div>
+                @empty
+                    <div class="carousel-item active h-100">
+                        <img src="{{ asset('hero-india.jpg') }}" class="d-block w-100 h-100" alt="Empowerment Banner" style="object-fit: cover; object-position: center right;">
+                    </div>
+                @endforelse
             </div>
         </div>
 
@@ -170,225 +170,27 @@
 
             <!-- 20 Service Cards in a grid -->
             <div class="row g-4 justify-content-center">
-                <!-- 1. Aadhaar Card -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-orange-yellow">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-fingerprint"></i>
-                        </div>
-                        <h5>Aadhaar Card</h5>
-                        <p>Apply for New Aadhaar or Update Details</p>
+                @foreach($featuredServices as $service)
+                    @php
+                        $isHex = Str::startsWith($service->theme_color, '#');
+                    @endphp
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <a href="{{ route('register') }}" class="text-decoration-none text-white">
+                            <div class="service-grid-card {{ !$isHex ? $service->theme_color : '' }}" 
+                                 style="{{ $isHex ? 'background: linear-gradient(135deg, ' . $service->theme_color . ' 0%, ' . $service->theme_color . 'dd 100%); border: 0;' : '' }}">
+                                <div class="service-icon-circle">
+                                    @if(str_starts_with($service->icon_class, 'bi '))
+                                        <i class="{{ $service->icon_class }}"></i>
+                                    @else
+                                        <img src="{{ asset($service->icon_class) }}" alt="icon" style="width: 22px; height: 22px; object-fit: contain; border-radius: 50%;">
+                                    @endif
+                                </div>
+                                <h5>{{ $service->name }}</h5>
+                                <p>{{ $service->description }}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-
-                <!-- 2. PAN Card -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-blue">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-card-heading"></i>
-                        </div>
-                        <h5>PAN Card</h5>
-                        <p>Apply for New PAN or Corrections</p>
-                    </div>
-                </div>
-
-                <!-- 3. GST Registration -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-green">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-percent"></i>
-                        </div>
-                        <h5>GST Registration</h5>
-                        <p>Register New GST or Update Details</p>
-                    </div>
-                </div>
-
-                <!-- 4. Driving License -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-purple">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-person-badge-fill"></i>
-                        </div>
-                        <h5>Driving License</h5>
-                        <p>Apply for New DL or Renewal</p>
-                    </div>
-                </div>
-
-                <!-- 5. Voter ID Card -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-red">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-person-square"></i>
-                        </div>
-                        <h5>Voter ID Card</h5>
-                        <p>Apply for New Voter ID or Corrections</p>
-                    </div>
-                </div>
-
-                <!-- 6. Passport -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-teal">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-globe2"></i>
-                        </div>
-                        <h5>Passport</h5>
-                        <p>Apply for New Passport or Re-issue</p>
-                    </div>
-                </div>
-
-                <!-- 7. Income Tax Return -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-red">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-file-earmark-ruled"></i>
-                        </div>
-                        <h5>Income Tax Return</h5>
-                        <p>File Your Income Tax Return Online</p>
-                    </div>
-                </div>
-
-                <!-- 8. PF Services -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-blue">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-piggy-bank"></i>
-                        </div>
-                        <h5>PF Services</h5>
-                        <p>Employee Provident Fund Services</p>
-                    </div>
-                </div>
-
-                <!-- 9. ESI Services -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-green">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-shield-fill-plus"></i>
-                        </div>
-                        <h5>ESI Services</h5>
-                        <p>Employee State Insurance Services</p>
-                    </div>
-                </div>
-
-                <!-- 10. Shop Act License -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-orange-yellow">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-shop"></i>
-                        </div>
-                        <h5>Shop Act License</h5>
-                        <p>Apply for Shop & Establishment License</p>
-                    </div>
-                </div>
-
-                <!-- 11. Birth Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-red">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-file-earmark-person"></i>
-                        </div>
-                        <h5>Birth Certificate</h5>
-                        <p>Apply for Birth Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 12. Death Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-blue">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-file-earmark-minus"></i>
-                        </div>
-                        <h5>Death Certificate</h5>
-                        <p>Apply for Death Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 13. Marriage Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-purple">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-heart-fill"></i>
-                        </div>
-                        <h5>Marriage Certificate</h5>
-                        <p>Apply for Marriage Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 14. Caste Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-green">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                        <h5>Caste Certificate</h5>
-                        <p>Apply for Caste Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 15. Residence Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-orange-yellow">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-house-check"></i>
-                        </div>
-                        <h5>Residence Certificate</h5>
-                        <p>Apply for Residence Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 16. Domicile Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-green">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-house-fill"></i>
-                        </div>
-                        <h5>Domicile Certificate</h5>
-                        <p>Apply for Domicile Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 17. BC Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-orange-yellow">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-file-earmark-check"></i>
-                        </div>
-                        <h5>BC Certificate</h5>
-                        <p>Apply for BC Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 18. EWS Certificate -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-blue">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-file-earmark-lock"></i>
-                        </div>
-                        <h5>EWS Certificate</h5>
-                        <p>Apply for EWS Certificate</p>
-                    </div>
-                </div>
-
-                <!-- 19. Udyam Registration -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-purple">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-briefcase"></i>
-                        </div>
-                        <h5>Udyam Registration</h5>
-                        <p>Register Your MSME Business</p>
-                    </div>
-                </div>
-
-                <!-- 20. MSME Registration -->
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="service-grid-card card-grad-teal">
-                        <div class="service-icon-circle">
-                            <i class="bi bi-buildings"></i>
-                        </div>
-                        <h5>MSME Registration</h5>
-                        <p>Register Your MSME Business</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -550,7 +352,7 @@
                 </div>
                 <div class="col-md-9 text-center text-md-start">
                     <p class="text-white fw-bold mb-0" style="font-size: 1.4rem; line-height: 1.5;">
-                        For any queries regarding SWACHESEVA, send an email to "care@swacheseva.com", then we will clarify your queries through your email.
+                        For any queries regarding SWACHESEVA, send an email to "{{ \App\Models\Setting::get('website_email', 'care@swacheseva.com') }}", then we will clarify your queries through your email.
                     </p>
                 </div>
             </div>
@@ -572,67 +374,29 @@
                 <a href="{{ route('blog') }}" class="text-decoration-none fw-bold small hover-underline" style="color: #002984;">View All Blogs <i class="bi bi-arrow-right ms-1"></i></a>
             </div>
 
-            <!-- 4 Blog cards in a row -->
-            <div class="row g-4">
-                <!-- Blog 1 -->
-                <div class="col-lg-3 col-md-6">
-                    <x-card :hover="true" class="h-100 p-0 overflow-hidden d-flex flex-column bg-white shadow-sm border border-light" style="border-radius: 12px;">
-                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Career Tips" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
-                        <div class="p-3 d-flex flex-column flex-grow-1">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #002984;">Career Tips</span>
-                                <small class="text-muted" style="font-size: 0.75rem;">May 20, 2024</small>
+            <!-- 3 Blog cards in a row -->
+            <div class="row g-4 justify-content-center">
+                @forelse($latestBlogs as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <x-card :hover="true" class="h-100 p-0 overflow-hidden d-flex flex-column bg-white shadow-sm border border-light" style="border-radius: 12px;">
+                            <img src="{{ $blog->image_path ? (Str::startsWith($blog->image_path, ['http://', 'https://']) ? $blog->image_path : asset($blog->image_path)) : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80' }}" alt="{{ $blog->title }}" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #002984;">Swacheseva News</span>
+                                    <small class="text-muted" style="font-size: 0.75rem;">{{ $blog->created_at->format('M d, Y') }}</small>
+                                </div>
+                                <h6 class="fw-bold mb-3 flex-grow-1" style="font-size: 0.95rem; line-height: 1.4;">
+                                    <a href="{{ route('blog.detail', $blog->slug) }}" class="text-decoration-none text-dark hover-primary">{{ $blog->title }}</a>
+                                </h6>
+                                <a href="{{ route('blog.detail', $blog->slug) }}" class="fw-bold text-decoration-none small hover-underline" style="color: #002984; font-size: 0.8rem;">Read More <i class="bi bi-arrow-right ms-1"></i></a>
                             </div>
-                            <h6 class="fw-bold mb-3 flex-grow-1" style="font-size: 0.9rem; line-height: 1.4;"><a href="{{ route('blog.detail') }}" class="text-decoration-none text-dark hover-primary">Top Skills in Demand for Better Career Opportunities</a></h6>
-                            <a href="{{ route('blog.detail') }}" class="fw-bold text-decoration-none small hover-underline" style="color: #002984; font-size: 0.8rem;">Read More <i class="bi bi-arrow-right ms-1"></i></a>
-                        </div>
-                    </x-card>
-                </div>
-
-                <!-- Blog 2 -->
-                <div class="col-lg-3 col-md-6">
-                    <x-card :hover="true" class="h-100 p-0 overflow-hidden d-flex flex-column bg-white shadow-sm border border-light" style="border-radius: 12px;">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="Government Schemes" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
-                        <div class="p-3 d-flex flex-column flex-grow-1">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #002984;">Government Schemes</span>
-                                <small class="text-muted" style="font-size: 0.75rem;">May 18, 2024</small>
-                            </div>
-                            <h6 class="fw-bold mb-3 flex-grow-1" style="font-size: 0.9rem; line-height: 1.4;"><a href="{{ route('blog.detail') }}" class="text-decoration-none text-dark hover-primary">How Government Schemes Help Youth Grow</a></h6>
-                            <a href="{{ route('blog.detail') }}" class="fw-bold text-decoration-none small hover-underline" style="color: #002984; font-size: 0.8rem;">Read More <i class="bi bi-arrow-right ms-1"></i></a>
-                        </div>
-                    </x-card>
-                </div>
-
-                <!-- Blog 3 -->
-                <div class="col-lg-3 col-md-6">
-                    <x-card :hover="true" class="h-100 p-0 overflow-hidden d-flex flex-column bg-white shadow-sm border border-light" style="border-radius: 12px;">
-                        <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=400&q=80" alt="Success Story" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
-                        <div class="p-3 d-flex flex-column flex-grow-1">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #002984;">Success Story</span>
-                                <small class="text-muted" style="font-size: 0.75rem;">May 15, 2024</small>
-                            </div>
-                            <h6 class="fw-bold mb-3 flex-grow-1" style="font-size: 0.9rem; line-height: 1.4;"><a href="{{ route('blog.detail') }}" class="text-decoration-none text-dark hover-primary">From Training to Success: Real Stories of Change</a></h6>
-                            <a href="{{ route('blog.detail') }}" class="fw-bold text-decoration-none small hover-underline" style="color: #002984; font-size: 0.8rem;">Read More <i class="bi bi-arrow-right ms-1"></i></a>
-                        </div>
-                    </x-card>
-                </div>
-
-                <!-- Blog 4 -->
-                <div class="col-lg-3 col-md-6">
-                    <x-card :hover="true" class="h-100 p-0 overflow-hidden d-flex flex-column bg-white shadow-sm border border-light" style="border-radius: 12px;">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=80" alt="Entrepreneurship" class="img-fluid w-100" style="height: 160px; object-fit: cover;">
-                        <div class="p-3 d-flex flex-column flex-grow-1">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #002984;">Entrepreneurship</span>
-                                <small class="text-muted" style="font-size: 0.75rem;">May 12, 2024</small>
-                            </div>
-                            <h6 class="fw-bold mb-3 flex-grow-1" style="font-size: 0.9rem; line-height: 1.4;"><a href="{{ route('blog.detail') }}" class="text-decoration-none text-dark hover-primary">Start Your Own Business with the Right Support</a></h6>
-                            <a href="{{ route('blog.detail') }}" class="fw-bold text-decoration-none small hover-underline" style="color: #002984; font-size: 0.8rem;">Read More <i class="bi bi-arrow-right ms-1"></i></a>
-                        </div>
-                    </x-card>
-                </div>
+                        </x-card>
+                    </div>
+                @empty
+                    <div class="col-12 text-center py-4">
+                        <p class="text-muted mb-0">No announcements published yet.</p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

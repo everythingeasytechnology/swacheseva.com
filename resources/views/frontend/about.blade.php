@@ -25,7 +25,7 @@
                     <h2 class="fw-bold text-primary-theme mt-2 mb-4">Connecting Potential with Opportunity</h2>
                     
                     <div class="d-flex gap-3 mb-4">
-                        <div class="bg-primary-theme bg-opacity-10 text-primary-theme p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 54px; height: 54px; flex-shrink: 0;">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 54px; height: 54px; flex-shrink: 0; background-color: #e7f1ff; border: 2px solid #0d6efd; color: #0d6efd;">
                             <i class="bi bi-rocket-takeoff fs-4"></i>
                         </div>
                         <div>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="d-flex gap-3">
-                        <div class="bg-primary-theme bg-opacity-10 text-primary-theme p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 54px; height: 54px; flex-shrink: 0;">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 54px; height: 54px; flex-shrink: 0; background-color: #e7f1ff; border: 2px solid #0d6efd; color: #0d6efd;">
                             <i class="bi bi-eye fs-4"></i>
                         </div>
                         <div>

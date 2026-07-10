@@ -38,9 +38,12 @@
 
     <!-- Sidebar Bottom Action -->
     <div class="sidebar-item mt-auto mb-4">
-        <a href="{{ route('home') }}" class="sidebar-link text-white-50 hover-white">
+        <a href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();" class="sidebar-link text-white-50 hover-white">
             <i class="bi bi-box-arrow-left"></i>
             <span>Logout</span>
         </a>
+        <form id="user-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
 </aside>

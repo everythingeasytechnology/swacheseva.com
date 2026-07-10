@@ -40,34 +40,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="small">2026-07-06 21:28:24</td>
-                                <td class="fw-bold">Admin</td>
-                                <td>Created Service: IT Training</td>
-                                <td>Service Schema</td>
-                                <td>192.168.1.1</td>
-                            </tr>
-                            <tr>
-                                <td class="small">2026-07-06 21:15:00</td>
-                                <td class="fw-bold">Rahul Kumar</td>
-                                <td>Completed Registration Form</td>
-                                <td>Applicant Profile</td>
-                                <td>103.45.12.90</td>
-                            </tr>
-                            <tr>
-                                <td class="small">2026-07-06 20:45:10</td>
-                                <td class="fw-bold">Priya Sharma</td>
-                                <td>Uploaded Profile Avatar</td>
-                                <td>User Storage</td>
-                                <td>157.23.45.12</td>
-                            </tr>
-                            <tr>
-                                <td class="small">2026-07-06 19:30:12</td>
-                                <td class="fw-bold">System Daemon</td>
-                                <td>Generated Weekly Excel Report</td>
-                                <td>Email Distribution</td>
-                                <td>127.0.0.1</td>
-                            </tr>
+                            @forelse($users as $user)
+                                <tr>
+                                    <td class="small">{{ $user->created_at->format('Y-m-d H:i:s') }}</td>
+                                    <td class="fw-bold">{{ $user->name }}</td>
+                                    <td>Candidate Submitted Application</td>
+                                    <td>UTR: {{ $user->utr_code }}</td>
+                                    <td>{{ request()->ip() ?? '127.0.0.1' }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">No system activities recorded.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -110,11 +95,11 @@
             new Chart(verificationCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Pending', 'Approved', 'Rejected', 'Under Escalation'],
+                    labels: ['Pending', 'Approved', 'Rejected'],
                     datasets: [{
                         label: 'Applications count',
-                        data: [320, 780, 150, 45],
-                        backgroundColor: ['#FE7B01', '#198754', '#dc3545', '#002984'],
+                        data: [{{ $stats['pending'] }}, {{ $stats['approved'] }}, {{ $stats['rejected'] }}],
+                        backgroundColor: ['#FE7B01', '#198754', '#dc3545'],
                         borderWidth: 0,
                         borderRadius: 5
                     }]

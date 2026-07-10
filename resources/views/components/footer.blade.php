@@ -47,15 +47,15 @@
                 <ul class="list-unstyled text-white small mb-0">
                     <li class="mb-2 d-flex align-items-start">
                         <i class="bi bi-geo-alt-fill text-secondary-theme me-2 mt-1"></i>
-                        <span>123, Swacheseva Bhawan, Sansad Marg, Connaught Place, New Delhi - 110001</span>
+                        <span>{{ \App\Models\Setting::get('website_address', '123, Swacheseva Bhawan, Sansad Marg, Connaught Place, New Delhi - 110001') }}</span>
                     </li>
                     <li class="mb-2 d-flex align-items-center">
                         <i class="bi bi-telephone-fill text-secondary-theme me-2"></i>
-                        <span>+91 123 456 7890</span>
+                        <span>{{ \App\Models\Setting::get('website_phone', '+91 9154252555') }}</span>
                     </li>
                     <li class="mb-2 d-flex align-items-center">
                         <i class="bi bi-envelope-fill text-secondary-theme me-2"></i>
-                        <span>contact@swacheseva.com</span>
+                        <span>{{ \App\Models\Setting::get('website_email', 'care@swacheseva.com') }}</span>
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="bi bi-clock-fill text-secondary-theme me-2"></i>

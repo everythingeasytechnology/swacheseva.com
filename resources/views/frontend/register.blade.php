@@ -15,14 +15,14 @@
                 <h3 class="fw-bold mb-3 text-white text-uppercase" style="letter-spacing: 1px;">Swacheseva Franchisee</h3>
                 
                 <p class="mb-4 text-white small" style="line-height: 1.6; font-size: 0.9rem;">
-                    To Apply for Swacheseva Franchisee First pay the Non-Refundable Franchisee Application Fee of <strong class="text-white text-decoration-underline" style="color: #FE7B01 !important;">Rs. 164/-</strong> through below UPI Scan Code using any UPI App and fill the Franchisee Application form which is displayed here.
+                    To Apply for Swacheseva Franchisee First pay the Non-Refundable Franchisee Application Fee of <strong class="text-white text-decoration-underline" style="color: #FE7B01 !important;">Rs. {{ $fee }}/-</strong> through below UPI Scan Code using any UPI App and fill the Franchisee Application form which is displayed here.
                 </p>
 
                 <!-- QR Scanner Block -->
                 <div class="bg-white p-3 rounded-4 shadow-lg mx-auto mb-3" style="max-width: 280px;">
-                    <img src="{{ asset('images/qr-code.png') }}" class="img-fluid rounded-3 mb-2" alt="Swacheseva Franchisee Payment QR Code" style="width: 220px; height: 220px; object-fit: contain;">
+                    <img src="{{ asset($qrPath) }}" class="img-fluid rounded-3 mb-2" alt="Swacheseva Franchisee Payment QR Code" style="width: 220px; height: 220px; object-fit: contain;">
                     <div class="bg-light py-1 px-2 rounded text-dark small font-monospace fw-bold" style="font-size: 0.75rem; letter-spacing: -0.5px;">
-                        9154252555-1@okbizaxis
+                        {{ $upi }}
                     </div>
                 </div>
 
@@ -48,17 +48,37 @@
                     <p class="text-muted small">Establish your franchise under Youth Employment Service</p>
                 </div>
 
+                <!-- Validation Alerts -->
+                @if ($errors->any())
+                    <div class="alert alert-danger rounded-3 p-3 mb-4">
+                        <ul class="mb-0 small">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show rounded-3 p-3 mb-4" role="alert">
+                        <span class="small"><i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <x-card :hover="false" class="p-4 bg-white border shadow-sm">
-                    <form action="{{ route('user.dashboard') }}" method="GET">
+                    <form action="{{ route('register.submit') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        
                         <!-- Name & Father Name -->
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label for="name" class="form-label text-muted small fw-bold">Name <span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Full Name" required>
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Full Name" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="father_name" class="form-label text-muted small fw-bold">Father's Name</label>
-                                <input type="text" id="father_name" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Father's Full Name">
+                                <input type="text" name="father_name" id="father_name" value="{{ old('father_name') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Father's Name">
                             </div>
                         </div>
 
@@ -66,42 +86,60 @@
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label for="phone" class="form-label text-muted small fw-bold">Mobile Number <span class="text-danger">*</span></label>
-                                <input type="tel" id="phone" class="form-control bg-light border-0 py-2 rounded-3" placeholder="9876543210" required>
+                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="9876543210" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="alt_phone" class="form-label text-muted small fw-bold">Alternate Mobile Number <span class="text-danger">*</span></label>
-                                <input type="tel" id="alt_phone" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Alternate Mobile Number" required>
+                                <input type="tel" name="alt_phone" id="alt_phone" value="{{ old('alt_phone') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Alternate Mobile" required>
                             </div>
                         </div>
 
                         <!-- Email Address -->
                         <div class="mb-3">
                             <label for="email" class="form-label text-muted small fw-bold">Email Address <span class="text-danger">*</span></label>
-                            <input type="email" id="email" class="form-control bg-light border-0 py-2 rounded-3" placeholder="akhilgusain2@gmail.com" required>
+                            <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="email@example.com" required>
+                        </div>
+
+                        <!-- Password & Confirm Password -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="password" class="form-label text-muted small fw-bold">Password <span class="text-danger">*</span></label>
+                                <input type="password" name="password" id="password" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Min 6 chars" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password_confirmation" class="form-label text-muted small fw-bold">Confirm Password <span class="text-danger">*</span></label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Confirm Password" required>
+                            </div>
                         </div>
 
                         <!-- Aadhaar Card Number & PAN Card Number -->
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label for="aadhar" class="form-label text-muted small fw-bold">Aadhaar Card Number</label>
-                                <input type="text" id="aadhar" class="form-control bg-light border-0 py-2 rounded-3" placeholder="12-digit Aadhaar Number">
+                                <input type="text" name="aadhar" id="aadhar" value="{{ old('aadhar') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="12-digit Aadhaar">
                             </div>
                             <div class="col-md-6">
                                 <label for="pan" class="form-label text-muted small fw-bold">PAN Card Number <span class="text-danger">*</span></label>
-                                <input type="text" id="pan" class="form-control bg-light border-0 py-2 rounded-3" placeholder="10-digit PAN Number" required>
+                                <input type="text" name="pan" id="pan" value="{{ old('pan') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="10-digit PAN" required>
                             </div>
                         </div>
 
                         <!-- Swacheseva Centre Code / Payment UTR No -->
                         <div class="mb-3">
                             <label for="utr_code" class="form-label text-muted small fw-bold">Swacheseva Centre Code / Payment UTR No <span class="text-danger">*</span></label>
-                            <input type="text" id="utr_code" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Enter Centre Code or Transaction UTR Number" required>
+                            <input type="text" name="utr_code" id="utr_code" value="{{ old('utr_code') }}" class="form-control bg-light border-0 py-2 rounded-3" placeholder="Transaction UTR Number" required>
+                        </div>
+
+                        <!-- Upload Payment Screenshot -->
+                        <div class="mb-3">
+                            <label for="payment_screenshot" class="form-label text-muted small fw-bold">Upload Payment Screenshot <span class="text-danger">*</span></label>
+                            <input type="file" name="payment_screenshot" id="payment_screenshot" class="form-control bg-light border-0 py-2 rounded-3" accept="image/*" required>
                         </div>
 
                         <!-- Shop Location Full Address -->
                         <div class="mb-4">
                             <label for="shop_address" class="form-label text-muted small fw-bold">Shop Location Full Address with Pincode <span class="text-danger">*</span></label>
-                            <textarea id="shop_address" class="form-control bg-light border-0 py-2 rounded-3" rows="3" placeholder="Enter complete address where you want to establish the Centre, along with the Pincode" required></textarea>
+                            <textarea name="shop_address" id="shop_address" class="form-control bg-light border-0 py-2 rounded-3" rows="3" placeholder="Enter complete address where you want to establish the Centre, along with the Pincode" required>{{ old('shop_address') }}</textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100 py-2 shadow-sm mb-3">Submit Application</button>
