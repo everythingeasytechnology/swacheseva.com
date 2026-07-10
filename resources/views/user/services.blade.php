@@ -12,12 +12,14 @@
                 <div class="row g-3">
                     <!-- 1. Aadhaar Card -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-fingerprint"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-fingerprint"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Aadhaar Card</h5>
                                 </div>
-                                <h5 class="mb-1">Aadhaar Card</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for New Aadhaar or Update Details</p>
                             </div>
                             <a href="https://myaadhaar.uidai.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #F7941D;">
@@ -28,12 +30,14 @@
 
                     <!-- 2. PAN Card -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-card-heading"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-card-heading"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">PAN Card</h5>
                                 </div>
-                                <h5 class="mb-1">PAN Card</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for New PAN or Corrections</p>
                             </div>
                             <a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #0B4EA2;">
@@ -44,12 +48,14 @@
 
                     <!-- 3. GST Registration -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-percent"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-percent"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">GST Registration</h5>
                                 </div>
-                                <h5 class="mb-1">GST Registration</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Register New GST or Update Details</p>
                             </div>
                             <a href="https://www.gst.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #11998e;">
@@ -60,12 +66,14 @@
 
                     <!-- 4. Driving License -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-purple d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-purple d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-person-badge-fill"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-person-badge-fill"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Driving License</h5>
                                 </div>
-                                <h5 class="mb-1">Driving License</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for New DL or Renewal</p>
                             </div>
                             <a href="https://sarathi.parivahan.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #7F00FF;">
@@ -76,12 +84,14 @@
 
                     <!-- 5. Voter ID Card -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-red d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-red d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-person-square"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-person-square"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Voter ID Card</h5>
                                 </div>
-                                <h5 class="mb-1">Voter ID Card</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for New Voter ID or Corrections</p>
                             </div>
                             <a href="https://voters.eci.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #ff007f;">
@@ -92,12 +102,14 @@
 
                     <!-- 6. Passport -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-teal d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-teal d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-globe2"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-globe2"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Passport</h5>
                                 </div>
-                                <h5 class="mb-1">Passport</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for New Passport or Re-issue</p>
                             </div>
                             <a href="https://www.passportindia.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #0083B0;">
@@ -108,12 +120,14 @@
 
                     <!-- 7. Income Tax Return -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-red d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-red d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-file-earmark-ruled"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-file-earmark-ruled"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Income Tax Return</h5>
                                 </div>
-                                <h5 class="mb-1">Income Tax Return</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">File Your Income Tax Return Online</p>
                             </div>
                             <a href="https://www.incometax.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #ff007f;">
@@ -124,12 +138,14 @@
 
                     <!-- 8. PF Services -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-piggy-bank"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-piggy-bank"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">PF Services</h5>
                                 </div>
-                                <h5 class="mb-1">PF Services</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Employee Provident Fund Services</p>
                             </div>
                             <a href="https://www.epfindia.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #0B4EA2;">
@@ -140,12 +156,14 @@
 
                     <!-- 9. ESI Services -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-shield-fill-plus"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-shield-fill-plus"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">ESI Services</h5>
                                 </div>
-                                <h5 class="mb-1">ESI Services</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Employee State Insurance Services</p>
                             </div>
                             <a href="https://www.esic.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #11998e;">
@@ -156,12 +174,14 @@
 
                     <!-- 10. Shop Act License -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-shop"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-shop"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Shop Act License</h5>
                                 </div>
-                                <h5 class="mb-1">Shop Act License</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Shop & Establishment License</p>
                             </div>
                             <a href="https://serviceonline.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #F7941D;">
@@ -172,12 +192,14 @@
 
                     <!-- 11. Birth Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-red d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-red d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-file-earmark-person"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-file-earmark-person"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Birth Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">Birth Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Birth Certificate Registry</p>
                             </div>
                             <a href="https://crsorgi.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #ff007f;">
@@ -188,12 +210,14 @@
 
                     <!-- 12. Death Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-file-earmark-minus"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-file-earmark-minus"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Death Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">Death Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Death Certificate Registry</p>
                             </div>
                             <a href="https://crsorgi.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #0B4EA2;">
@@ -204,12 +228,14 @@
 
                     <!-- 13. Marriage Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-purple d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-purple d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-heart-fill"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-heart-fill"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Marriage Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">Marriage Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Marriage Certificate</p>
                             </div>
                             <a href="https://crsorgi.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #7F00FF;">
@@ -220,12 +246,14 @@
 
                     <!-- 14. Caste Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-file-earmark-text"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Caste Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">Caste Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Caste Certificate online</p>
                             </div>
                             <a href="https://serviceonline.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #11998e;">
@@ -236,12 +264,14 @@
 
                     <!-- 15. Residence Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-house-check"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-house-check"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Residence Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">Residence Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Residence Certificate</p>
                             </div>
                             <a href="https://serviceonline.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #F7941D;">
@@ -252,12 +282,14 @@
 
                     <!-- 16. Domicile Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-green d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-house-fill"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-house-fill"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Domicile Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">Domicile Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for Domicile Certificate</p>
                             </div>
                             <a href="https://serviceonline.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #11998e;">
@@ -268,12 +300,14 @@
 
                     <!-- 17. BC Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-orange-yellow d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-file-earmark-check"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-file-earmark-check"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">BC Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">BC Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for BC Certificate online</p>
                             </div>
                             <a href="https://serviceonline.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #F7941D;">
@@ -284,12 +318,14 @@
 
                     <!-- 18. EWS Certificate -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-blue d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-file-earmark-lock"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-file-earmark-lock"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">EWS Certificate</h5>
                                 </div>
-                                <h5 class="mb-1">EWS Certificate</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Apply for EWS Income Certificate</p>
                             </div>
                             <a href="https://serviceonline.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #0B4EA2;">
@@ -300,12 +336,14 @@
 
                     <!-- 19. Udyam Registration -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-purple d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-purple d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-briefcase"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-briefcase"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">Udyam Registration</h5>
                                 </div>
-                                <h5 class="mb-1">Udyam Registration</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Register Your MSME Business online</p>
                             </div>
                             <a href="https://udyamregistration.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #7F00FF;">
@@ -316,12 +354,14 @@
 
                     <!-- 20. MSME Registration -->
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="service-grid-card card-grad-teal d-flex flex-column justify-content-between p-3" style="min-height: 160px;">
+                        <div class="service-grid-card card-grad-teal d-flex flex-column justify-content-between p-3" style="min-height: 130px;">
                             <div>
-                                <div class="service-icon-circle mb-2">
-                                    <i class="bi bi-buildings"></i>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="service-icon-circle mb-0 flex-shrink-0">
+                                        <i class="bi bi-buildings"></i>
+                                    </div>
+                                    <h5 class="mb-0 text-white" style="font-size: 0.95rem; line-height: 1.2;">MSME Registration</h5>
                                 </div>
-                                <h5 class="mb-1">MSME Registration</h5>
                                 <p class="text-white-50 mb-3" style="font-size: 0.72rem; line-height: 1.3;">Register MSME / Udyam Business</p>
                             </div>
                             <a href="https://udyamregistration.gov.in/" target="_blank" class="btn btn-light btn-sm w-100 fw-bold" style="font-size: 0.72rem; border-radius: 8px; color: #0083B0;">

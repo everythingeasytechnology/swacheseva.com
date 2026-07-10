@@ -3,11 +3,30 @@
 @section('title', 'Swacheseva - Empowering Youth, Building a Better Tomorrow')
 
 @section('content')
-    <!-- Hero Section -->
-    <section class="hero-section position-relative overflow-hidden" style="background-image: url('{{ asset('hero-india.jpg') }}'); background-size: cover; background-position: center right;">
-        <div class="container">
+    <!-- Hero Section with Background Slideshow -->
+    <section class="hero-section position-relative overflow-hidden py-5" style="min-height: 600px;">
+        <!-- Background Slideshow Carousel -->
+        <div id="heroBgCarousel" class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" data-bs-interval="4000" style="z-index: 1;">
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100">
+                    <img src="{{ asset('hero-india.jpg') }}" class="d-block w-100 h-100" alt="Empowerment Banner" style="object-fit: cover; object-position: center right;">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" class="d-block w-100 h-100" alt="Youth Education" style="object-fit: cover; object-position: center right;">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097798?auto=format&fit=crop&w=1200&q=80" class="d-block w-100 h-100" alt="Skill Development" style="object-fit: cover; object-position: center right;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Glass Overlay to ensure legibility -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4) 100%); z-index: 2;"></div>
+
+        <!-- Hero Content (above the background carousel) -->
+        <div class="container position-relative py-5" style="z-index: 3;">
             <div class="row align-items-center gx-5">
-                <div class="col-lg-6 text-center text-lg-start">
+                <div class="col-lg-7 text-center text-lg-start">
                     <div class="d-inline-flex align-items-center justify-content-center rounded-pill mb-4 px-3 py-2" style="background: rgba(254, 123, 1, 0.12); color: #FE7B01; letter-spacing: 0.3px; font-weight: 600; font-size: 0.95rem;">
                         Empowering youth for a brighter future
                     </div>
@@ -52,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6"></div>
+                <div class="col-lg-5"></div>
             </div>
         </div>
     </section>
