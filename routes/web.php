@@ -19,7 +19,7 @@ use App\Models\Blog;
 */
 Route::get('/', function () {
     $slides = HeroSlide::all();
-    $featuredServices = Service::where('is_featured', true)->get();
+    $featuredServices = Service::where('is_featured', true)->orderBy('sort_order')->orderBy('id')->get();
     $latestBlogs = Blog::where('status', 'published')->latest()->take(3)->get();
     return view('frontend.home', compact('slides', 'featuredServices', 'latestBlogs'));
 })->name('home');
@@ -29,7 +29,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/services', function () {
-    $services = Service::all();
+    $services = Service::orderBy('sort_order')->orderBy('id')->get();
     return view('frontend.services', compact('services'));
 })->name('services');
 
@@ -78,6 +78,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/services/store', [AdminServiceController::class, 'store'])->name('admin.services.store');
     Route::post('/services/{id}/update', [AdminServiceController::class, 'update'])->name('admin.services.update');
     Route::post('/services/{id}/delete', [AdminServiceController::class, 'destroy'])->name('admin.services.delete');
+    Route::post('/services/reorder', [AdminServiceController::class, 'reorder'])->name('admin.services.reorder');
 
     Route::get('/blogs', [AdminBlogController::class, 'index'])->name('admin.blogs');
     Route::post('/blogs/store', [AdminBlogController::class, 'store'])->name('admin.blogs.store');

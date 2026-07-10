@@ -18,7 +18,7 @@ class UserDashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $services = Service::all();
+        $services = Service::orderBy('sort_order')->orderBy('id')->get();
         $blogs = Blog::where('status', 'published')->latest()->take(3)->get();
         return view('user.dashboard', compact('user', 'services', 'blogs'));
     }
@@ -125,7 +125,7 @@ class UserDashboardController extends Controller
     public function services()
     {
         $user = Auth::user();
-        $services = Service::all();
+        $services = Service::orderBy('sort_order')->orderBy('id')->get();
         return view('user.services', compact('user', 'services'));
     }
 

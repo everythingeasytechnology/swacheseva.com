@@ -13,7 +13,7 @@ class AdminServiceController extends Controller
      */
     public function index()
      {
-         $services = Service::all();
+         $services = Service::orderBy('sort_order')->orderBy('id')->get();
          return view('admin.services', compact('services'));
      }
  
@@ -45,9 +45,10 @@ class AdminServiceController extends Controller
              'link' => $request->link,
              'icon_class' => $iconPath,
              'theme_color' => $request->theme_color,
-             'is_featured' => $request->is_featured
+             'is_featured' => $request->is_featured,
+             'sort_order' => (Service::max('sort_order') ?? 0) + 1
          ]);
- 
+
          return back()->with('success', 'New E-Service added successfully.');
      }
  
@@ -112,5 +113,23 @@ class AdminServiceController extends Controller
 
          $service->delete();
          return back()->with('success', 'E-Service deleted successfully.');
+     }
+
+     /**
+      * Update display order of E-Services.
+      */
+     public function reorder(Request $request)
+     {
+         $request->validate([
+             'order' => 'required|array',
+             'order.*.id' => 'required|integer|exists:services,id',
+             'order.*.sort_order' => 'required|integer|min:1',
+         ]);
+
+         foreach ($request->order as $item) {
+             Service::where('id', $item['id'])->update(['sort_order' => $item['sort_order']]);
+         }
+
+         return back()->with('success', 'Service order updated successfully.');
      }
 }

@@ -42,6 +42,7 @@
                     <table class="table premium-table align-middle">
                         <thead>
                             <tr>
+                                <th style="width: 90px;">Order</th>
                                 <th>Service Name</th>
                                 <th>Redirect Link</th>
                                 <th>Theme Color</th>
@@ -51,6 +52,9 @@
                         <tbody id="servicesTableBody">
                             @forelse($services as $s)
                                 <tr class="service-row" data-name="{{ strtolower($s->name) }}">
+                                    <td>
+                                        <input type="number" class="form-control form-control-sm bg-light border-0 text-center service-order-input" data-id="{{ $s->id }}" value="{{ $s->sort_order }}" min="1" style="width: 70px;">
+                                    </td>
                                     <td>
                                         <div class="d-flex align-items-center gap-2">
                                             @php
@@ -98,12 +102,19 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center text-muted py-4">No E-Services configured.</td>
+                                    <td colspan="5" class="text-center text-muted py-4">No E-Services configured.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
+                @if($services->count())
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" id="saveOrderBtn" class="btn btn-sm btn-primary rounded-pill px-4 shadow-sm">
+                            <i class="bi bi-sort-down me-1"></i> Save Order
+                        </button>
+                    </div>
+                @endif
             </x-card>
         </div>
 
@@ -214,6 +225,29 @@
             document.getElementById('edit-color-hex-val').textContent = colorVal.toUpperCase();
         }
 
+        function saveServiceOrder() {
+            var inputs = document.querySelectorAll('.service-order-input');
+            var order = [];
+            inputs.forEach(function (input) {
+                order.push({ id: input.getAttribute('data-id'), sort_order: input.value });
+            });
+
+            fetch('{{ route("admin.services.reorder") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ order: order })
+            }).then(function (response) {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to save order. Please try again.');
+                }
+            });
+        }
+
         function filterServices() {
             var searchVal = document.getElementById('serviceSearch').value.toLowerCase();
             var rows = document.querySelectorAll('.service-row');
@@ -229,6 +263,11 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            var saveOrderBtn = document.getElementById('saveOrderBtn');
+            if (saveOrderBtn) {
+                saveOrderBtn.addEventListener('click', saveServiceOrder);
+            }
+
             // Color Pickers display text listeners
             const addPicker = document.getElementById('add_theme');
             const addLabel = document.getElementById('add-color-hex-val');
