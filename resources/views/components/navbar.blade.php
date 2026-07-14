@@ -18,7 +18,7 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <img src="{{ asset('bk-logo.png') }}" alt="Swacheseva" style="height: 48px; width: auto;">
+            <img src="{{ asset('bk-logo.png') }}" alt="Swacheseva" style="height: 65px; width: auto;">
         </a>
 
         <!-- Responsive Toggler -->
