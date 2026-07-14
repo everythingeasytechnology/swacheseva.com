@@ -21,7 +21,7 @@
         </div>
 
         <!-- Glass Overlay to ensure legibility -->
-        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4) 100%); z-index: 2;"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(90deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0.2) 100%); z-index: 2;"></div>
 
         <!-- Hero Content (above the background carousel) -->
         <div class="container position-relative py-5" style="z-index: 3;">
