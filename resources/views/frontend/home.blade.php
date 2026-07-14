@@ -201,52 +201,7 @@
 
 
     <!-- Statistics Section (Below services cards) -->
-    <section class="py-4 shadow-sm" style="background-color: #002984;">
-        <div class="container">
-            <div class="row g-4 text-center justify-content-center">
-                <!-- Stat 1 -->
-                <div class="col-6 col-md-2 border-end border-white-10">
-                    <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-mortarboard-fill fs-3 text-white-50 mb-1"></i>
-                        <h4 class="fw-bold mb-0 text-white">1250+</h4>
-                        <small class="text-white-50 fs-9 text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Youth Trained</small>
-                    </div>
-                </div>
-                <!-- Stat 2 -->
-                <div class="col-6 col-md-2 border-end border-white-10">
-                    <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-briefcase-fill fs-3 text-white-50 mb-1"></i>
-                        <h4 class="fw-bold mb-0 text-white">850+</h4>
-                        <small class="text-white-50 fs-9 text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Jobs Placed</small>
-                    </div>
-                </div>
-                <!-- Stat 3 -->
-                <div class="col-6 col-md-2 border-end border-white-10">
-                    <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-building-fill fs-3 text-white-50 mb-1"></i>
-                        <h4 class="fw-bold mb-0 text-white">300+</h4>
-                        <small class="text-white-50 fs-9 text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Companies</small>
-                    </div>
-                </div>
-                <!-- Stat 4 -->
-                <div class="col-6 col-md-2 border-end border-white-10">
-                    <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-geo-alt-fill fs-3 text-white-50 mb-1"></i>
-                        <h4 class="fw-bold mb-0 text-white">50+</h4>
-                        <small class="text-white-50 fs-9 text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Locations</small>
-                    </div>
-                </div>
-                <!-- Stat 5 -->
-                <div class="col-6 col-md-2">
-                    <div class="d-flex flex-column align-items-center">
-                        <i class="bi bi-clock-history fs-3 text-white-50 mb-1"></i>
-                        <h4 class="fw-bold mb-0 text-white">10+</h4>
-                        <small class="text-white-50 fs-9 text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Years of Service</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Latest Blogs Section -->
 
