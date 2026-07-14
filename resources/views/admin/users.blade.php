@@ -73,7 +73,7 @@
                     @forelse($users as $user)
                         <tr class="user-row" data-status="{{ $user->status }}" data-name="{{ strtolower($user->name) }}" data-email="{{ strtolower($user->email) }}">
                             <td class="font-monospace text-muted" style="font-size: 0.8rem;">
-                                SW-CAND-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}
+                                SWAC-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}
                             </td>
                             <td class="fw-bold text-dark">
                                 <div class="d-flex align-items-center gap-2">
