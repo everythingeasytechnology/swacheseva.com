@@ -1,24 +1,23 @@
-{{-- Top Bar
+<!-- Top Bar -->
 <div class="bg-primary-theme py-2 text-white text-opacity-85" style="font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: #002984 !important;">
     <div class="container d-flex justify-content-between align-items-center">
         <div>
-            <i class="bi bi-envelope-fill me-1 text-secondary-theme"></i> Mail us : {{ \App\Models\Setting::get('website_email_secondary', 'swacheseva@gmail.com') }} <span class="mx-2">|</span> {{ \App\Models\Setting::get('website_email', 'care@swacheseva.com') }}
+            <!-- <i class="bi bi-envelope-fill me-1 text-secondary-theme"></i> Mail us : {{ \App\Models\Setting::get('website_email_secondary', 'swacheseva@gmail.com') }} <span class="mx-2">|</span> {{ \App\Models\Setting::get('website_email', 'care@swacheseva.com') }} -->
         </div>
         <div class="d-flex align-items-center gap-3">
             <span><i class="bi bi-clock-fill me-1 text-secondary-theme"></i> Opening Hours : Monday - Friday: 10:00AM to 5:00PM</span>
-            <span class="d-none d-md-inline">|</span>
-            <a href="{{ route('register') }}" class="text-white text-decoration-none fw-semibold d-none d-md-inline">Swacheseva Application Form</a>
+            <span class="d-none d-md-inline"></span>
+            <!-- <a href="{{ route('register') }}" class="text-white text-decoration-none fw-semibold d-none d-md-inline">Swacheseva Application Form</a> -->
         </div>
     </div>
 </div>
---}}
 
 <!-- Sticky Navbar -->
-<nav class="navbar navbar-expand-lg sticky-navbar py-3">
+<nav class="navbar navbar-expand-lg sticky-navbar ">
     <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <img src="{{ asset('bk-logo.png') }}" alt="Swacheseva" style="height: 65px; width: auto;">
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style=" padding:0; margin:0;">
+            <img src="{{ asset('bk-logo.png') }}" alt="Swacheseva" style="height: 75px; width: auto;">
         </a>
 
         <!-- Responsive Toggler -->
