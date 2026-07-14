@@ -36,7 +36,7 @@ class AdminDashboardController extends Controller
      */
     public function users()
     {
-        $users = User::where('role', 'user')->latest()->get();
+        $users = User::where('role', 'user')->latest()->paginate(15);
         return view('admin.users', compact('users'));
     }
 
@@ -105,6 +105,21 @@ class AdminDashboardController extends Controller
             'holder_name' => 'nullable|string|max:255',
             'aadhaar_no' => 'nullable|string|max:20',
             'pan_no' => 'nullable|string|max:20',
+
+            'physicall_handicap' => 'nullable|string|max:255',
+            'year_of_passing' => 'nullable|string|max:10',
+            'institute_name' => 'nullable|string|max:255',
+            'shop_location' => 'nullable|string|max:255',
+            'shop_location_2' => 'nullable|string|max:255',
+            'house_address' => 'nullable|string',
+            'country' => 'nullable|string|max:255',
+            'alt_occuation_type' => 'nullable|string|max:255',
+            'marketing_area' => 'nullable|string|max:255',
+            'online_service' => 'nullable|string|max:255',
+            'bank_account_type' => 'nullable|string|max:255',
+            'fee' => 'nullable|numeric',
+            'date_payment' => 'nullable|date',
+            'service' => 'nullable|string|max:255',
         ]);
 
         $data = $request->only([
@@ -113,7 +128,10 @@ class AdminDashboardController extends Controller
             'category', 'qualification', 'village', 'post_office', 'tehsil',
             'district', 'state', 'pincode', 'shop_name', 'shop_address',
             'shop_district', 'shop_state', 'shop_pincode', 'bank_name',
-            'account_no', 'ifsc_code', 'holder_name', 'aadhaar_no', 'pan_no'
+            'account_no', 'ifsc_code', 'holder_name', 'aadhaar_no', 'pan_no',
+            'physicall_handicap', 'year_of_passing', 'institute_name', 'shop_location', 'shop_location_2',
+            'house_address', 'country', 'alt_occuation_type', 'marketing_area', 'online_service',
+            'bank_account_type', 'fee', 'date_payment', 'service',
         ]);
 
         if ($request->filled('password')) {

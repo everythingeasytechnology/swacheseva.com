@@ -23,7 +23,10 @@ class User extends Authenticatable
         'bank_name', 'account_no', 'ifsc_code', 'holder_name',
         'aadhaar_no', 'pan_no', 'security_pin',
         'avatar', 'shop_photo', 'qualification_doc', 'aadhaar_front', 'aadhaar_back', 'pan_doc', 'passbook_doc',
-        'declaration_signed'
+        'declaration_signed',
+        'physicall_handicap', 'year_of_passing', 'institute_name', 'shop_location', 'shop_location_2',
+        'house_address', 'country', 'alt_occuation_type', 'marketing_area', 'online_service',
+        'bank_account_type', 'fee', 'date_payment', 'service',
     ];
 
     protected $hidden = [
@@ -42,6 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
             'declaration_signed' => 'boolean',
             'date_birth' => 'date',
+            'date_payment' => 'date',
+            'fee' => 'decimal:2',
         ];
     }
 }

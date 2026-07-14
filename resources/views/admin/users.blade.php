@@ -57,14 +57,23 @@
     <!-- Users Table Card -->
     <x-card :hover="false" class="bg-white border-0 shadow-sm">
         <div class="table-responsive">
-            <table class="table premium-table align-middle" id="usersTable">
+            <table class="table premium-table align-middle" id="usersTable" style="table-layout: fixed; width: 100%;">
+                <colgroup>
+                    <col style="width: 10%;">
+                    <col style="width: 20%;">
+                    <col style="width: 22%;">
+                    <col style="width: 12%;">
+                    <col style="width: 12%;">
+                    <col style="width: 12%;">
+                    <col style="width: 12%;">
+                </colgroup>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Payment UTR</th>
+                        <!-- <th>Payment UTR</th> -->
                         <th>Status</th>
                         <th class="text-center">Action</th>
                     </tr>
@@ -72,22 +81,22 @@
                 <tbody>
                     @forelse($users as $user)
                         <tr class="user-row" data-status="{{ $user->status }}" data-name="{{ strtolower($user->name) }}" data-email="{{ strtolower($user->email) }}">
-                            <td class="font-monospace text-muted" style="font-size: 0.8rem;">
+                            <td class="font-monospace text-muted text-truncate" style="font-size: 0.8rem;">
                                 SWAC-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}
                             </td>
                             <td class="fw-bold text-dark">
                                 <div class="d-flex align-items-center gap-2">
-                                    <div class="bg-primary-theme bg-opacity-10 text-primary-theme rounded-circle d-flex align-items-center justify-content-center" style="width: 30px; height: 30px; font-size: 0.85rem;">
+                                    <!-- <div class="bg-primary-theme bg-opacity-10 text-primary-theme rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 30px; height: 30px; font-size: 0.85rem;">
                                         <i class="bi bi-person-fill"></i>
-                                    </div>
-                                    <span>{{ $user->name }}</span>
+                                    </div> -->
+                                    <span class="text-truncate" style="max-width: 160px;" title="{{ $user->name }}">{{ $user->name }}</span>
                                 </div>
                             </td>
-                            <td class="text-muted"><i class="bi bi-envelope text-muted me-1"></i> {{ $user->email }}</td>
-                            <td><i class="bi bi-telephone text-muted me-1"></i> {{ $user->phone }}</td>
-                            <td>
+                            <td class="text-muted text-truncate" title="{{ $user->email }}"><i class="bi bi-envelope text-muted me-1"></i> {{ $user->email }}</td>
+                            <td class="text-truncate"><i class="bi bi-telephone text-muted me-1"></i> {{ $user->phone }}</td>
+                            <!-- <td>
                                 <span class="badge bg-light text-dark font-monospace border">{{ $user->utr_code ?? 'N/A' }}</span>
-                            </td>
+                            </td> -->
                             <td>
                                 @if($user->status === 'pending')
                                     <span class="badge bg-warning text-dark"><i class="bi bi-hourglass-split me-1"></i> Pending Approval</span>
@@ -144,6 +153,11 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+
+        <!-- Pagination UI Component -->
+        <div class="mt-4 d-flex justify-content-center">
+            {{ $users->links() }}
         </div>
     </x-card>
 
@@ -224,6 +238,11 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link rounded-pill fw-bold text-uppercase" id="m-bank-tab" data-bs-toggle="tab" data-bs-target="#m-bank" type="button" role="tab" style="font-size: 0.7rem; padding: 0.4rem 1rem;">
                                     Bank & Security
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-pill fw-bold text-uppercase" id="m-other-tab" data-bs-toggle="tab" data-bs-target="#m-other" type="button" role="tab" style="font-size: 0.7rem; padding: 0.4rem 1rem;">
+                                    Other Details
                                 </button>
                             </li>
                         </ul>
@@ -419,6 +438,79 @@
                                 </div>
                             </div>
 
+                            <!-- TAB 5: Other Details -->
+                            <div class="tab-pane fade" id="m-other" role="tabpanel">
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit_physicall_handicap" class="form-label text-muted small fw-bold">Physically Handicapped</label>
+                                        <input type="text" name="physicall_handicap" id="edit_physicall_handicap" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_year_of_passing" class="form-label text-muted small fw-bold">Year of Passing</label>
+                                        <input type="text" name="year_of_passing" id="edit_year_of_passing" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit_institute_name" class="form-label text-muted small fw-bold">Institute Name</label>
+                                        <input type="text" name="institute_name" id="edit_institute_name" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_country" class="form-label text-muted small fw-bold">Country</label>
+                                        <input type="text" name="country" id="edit_country" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit_shop_location" class="form-label text-muted small fw-bold">Shop Location</label>
+                                        <input type="text" name="shop_location" id="edit_shop_location" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_shop_location_2" class="form-label text-muted small fw-bold">Shop Location 2</label>
+                                        <input type="text" name="shop_location_2" id="edit_shop_location_2" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit_house_address" class="form-label text-muted small fw-bold">House Address</label>
+                                    <textarea name="house_address" id="edit_house_address" class="form-control bg-light border-0 py-2 rounded-3" rows="2"></textarea>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit_alt_occuation_type" class="form-label text-muted small fw-bold">Alternate Occupation Type</label>
+                                        <input type="text" name="alt_occuation_type" id="edit_alt_occuation_type" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_marketing_area" class="form-label text-muted small fw-bold">Marketing Area</label>
+                                        <input type="text" name="marketing_area" id="edit_marketing_area" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit_online_service" class="form-label text-muted small fw-bold">Online Service</label>
+                                        <input type="text" name="online_service" id="edit_online_service" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_service" class="form-label text-muted small fw-bold">Service</label>
+                                        <input type="text" name="service" id="edit_service" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                </div>
+                                <hr class="my-3">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="edit_bank_account_type" class="form-label text-muted small fw-bold">Bank Account Type</label>
+                                        <input type="text" name="bank_account_type" id="edit_bank_account_type" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="edit_fee" class="form-label text-muted small fw-bold">Fee</label>
+                                        <input type="number" step="0.01" name="fee" id="edit_fee" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="edit_date_payment" class="form-label text-muted small fw-bold">Date of Payment</label>
+                                        <input type="date" name="date_payment" id="edit_date_payment" class="form-control bg-light border-0 py-2 rounded-3">
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer border-top-0 pt-0">
@@ -470,6 +562,21 @@
             
             document.getElementById('edit_aadhaar_no').value = user.aadhaar_no || '';
             document.getElementById('edit_pan_no').value = user.pan_no || '';
+
+            document.getElementById('edit_physicall_handicap').value = user.physicall_handicap || '';
+            document.getElementById('edit_year_of_passing').value = user.year_of_passing || '';
+            document.getElementById('edit_institute_name').value = user.institute_name || '';
+            document.getElementById('edit_country').value = user.country || '';
+            document.getElementById('edit_shop_location').value = user.shop_location || '';
+            document.getElementById('edit_shop_location_2').value = user.shop_location_2 || '';
+            document.getElementById('edit_house_address').value = user.house_address || '';
+            document.getElementById('edit_alt_occuation_type').value = user.alt_occuation_type || '';
+            document.getElementById('edit_marketing_area').value = user.marketing_area || '';
+            document.getElementById('edit_online_service').value = user.online_service || '';
+            document.getElementById('edit_service').value = user.service || '';
+            document.getElementById('edit_bank_account_type').value = user.bank_account_type || '';
+            document.getElementById('edit_fee').value = user.fee || '';
+            document.getElementById('edit_date_payment').value = user.date_payment || '';
         }
 
         function filterUsers() {
