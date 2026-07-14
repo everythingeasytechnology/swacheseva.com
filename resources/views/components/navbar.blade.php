@@ -34,9 +34,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About Us</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'services' ? 'active' : '' }}" href="{{ route('services') }}">Services</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'blog' || Route::currentRouteName() == 'blog.detail' ? 'active' : '' }}" href="{{ route('blog') }}">Blog</a>
                 </li>

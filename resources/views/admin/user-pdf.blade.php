@@ -154,7 +154,7 @@
             <div class="col-md-4">
                 <div class="border rounded p-3 bg-light text-center">
                     <span class="text-muted small d-block mb-1">Candidate ID</span>
-                    <strong class="font-monospace fs-6">SW-CAND-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</strong>
+                    <strong class="font-monospace fs-6">SWAC-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</strong>
                 </div>
             </div>
             <div class="col-md-4">
