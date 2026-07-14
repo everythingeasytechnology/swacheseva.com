@@ -27,9 +27,9 @@
         <div class="container position-relative" style="z-index: 3;">
             <div class="row align-items-center gx-5">
                 <div class="col-lg-7 text-center text-lg-start">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-pill mb-4 px-3 pt-0 pb-2" style="background: rgba(254, 123, 1, 0.12); color: #FE7B01; letter-spacing: 0.3px; font-weight: 600; font-size: 0.95rem; margin-top: -20px;">
+                    <!-- <div class="d-inline-flex align-items-center justify-content-center rounded-pill mb-4 px-3 pt-0 pb-2" style="background: rgba(254, 123, 1, 0.12); color: #FE7B01; letter-spacing: 0.3px; font-weight: 600; font-size: 0.95rem; margin-top: -20px;">
                         Empowering youth for a brighter future
-                    </div>
+                    </div> -->
                     <h1 class="display-4 fw-bold mb-4" style="line-height: 1.05; color: #002984;">
                         Empowering Youth,<br>
                         <span class="text-secondary-theme">Building a Better Tomorrow</span>
