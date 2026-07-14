@@ -1,4 +1,4 @@
-<!-- Top Bar -->
+{{-- Top Bar
 <div class="bg-primary-theme py-2 text-white text-opacity-85" style="font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: #002984 !important;">
     <div class="container d-flex justify-content-between align-items-center">
         <div>
@@ -11,6 +11,7 @@
         </div>
     </div>
 </div>
+--}}
 
 <!-- Sticky Navbar -->
 <nav class="navbar navbar-expand-lg sticky-navbar py-3">

@@ -21,7 +21,7 @@
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="About Swacheseva Group" class="img-fluid rounded-4 shadow">
                 </div>
                 <div class="col-lg-6">
-                    <span class="text-secondary-theme fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">OUR ROADMAP</span>
+                    <span class="text-secondary-theme fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">OUR Mission</span>
                     <h2 class="fw-bold text-primary-theme mt-2 mb-4">Connecting Potential with Opportunity</h2>
                     
                     <div class="d-flex gap-3 mb-4">

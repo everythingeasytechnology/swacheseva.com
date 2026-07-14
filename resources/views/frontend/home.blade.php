@@ -27,7 +27,7 @@
         <div class="container position-relative py-5" style="z-index: 3;">
             <div class="row align-items-center gx-5">
                 <div class="col-lg-7 text-center text-lg-start">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-pill mb-4 px-3 py-2" style="background: rgba(254, 123, 1, 0.12); color: #FE7B01; letter-spacing: 0.3px; font-weight: 600; font-size: 0.95rem;">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-pill mb-4 px-3 pt-0 pb-2" style="background: rgba(254, 123, 1, 0.12); color: #FE7B01; letter-spacing: 0.3px; font-weight: 600; font-size: 0.95rem; margin-top: -20px;">
                         Empowering youth for a brighter future
                     </div>
                     <h1 class="display-4 fw-bold mb-4" style="line-height: 1.05; color: #002984;">
@@ -41,7 +41,7 @@
                         <a href="{{ route('services') }}" class="btn btn-primary px-4 py-2.5 text-white fw-bold shadow-sm" style="border-radius: 6px; font-size: 0.95rem;">Explore Services</a>
                         <a href="{{ route('register') }}" class="btn btn-secondary-theme px-4 py-2.5 text-white fw-bold shadow-sm" style="border-radius: 6px; font-size: 0.95rem;">Apply Now</a>
                     </div>
-                    <div class="row g-3 justify-content-center justify-content-lg-start">
+                    <!-- <div class="row g-3 justify-content-center justify-content-lg-start">
                         <div class="col-6 col-sm-4">
                             <div class="premium-card d-flex align-items-center gap-2 p-3" style="border-radius: 18px; background: rgba(255,255,255,0.95); border: 1px solid rgba(11,78,162,0.08);">
                                 <i class="bi bi-people-fill text-primary-theme fs-4"></i>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-5"></div>
             </div>
