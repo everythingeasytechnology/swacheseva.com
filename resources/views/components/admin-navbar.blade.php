@@ -32,7 +32,7 @@
                     <img src="{{ Auth::user()->avatar ? (Str::startsWith(Auth::user()->avatar, ['http://', 'https://']) ? Auth::user()->avatar : asset(Auth::user()->avatar)) : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' }}" alt="Profile avatar" class="rounded-circle border" style="width: 36px; height: 36px; object-fit: cover;">
                     <div class="ms-2 d-none d-lg-block text-start leading-none" style="margin-top: 2px;">
                         <span class="fw-bold text-dark fs-8 d-block" style="font-size: 0.85rem;">{{ Auth::user()->name ?? 'Super Administrator' }}</span>
-                        <small class="text-muted fs-9 d-block" style="font-size: 0.7rem; margin-top: -3px;">{{ Auth::user()->role === 'admin' ? 'Super Admin' : 'Candidate' }}</small>
+                        <small class="text-muted fs-9 d-block" style="font-size: 0.7rem; margin-top: -3px;">{{ Auth::user()->role === 'admin' ? 'Super Admin' : 'Agent' }}</small>
                     </div>
                 </a>
                 

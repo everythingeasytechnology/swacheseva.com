@@ -21,7 +21,7 @@
                     <p class="text-white-50 mb-0 small" style="max-width: 600px;">
                         Your profile status is currently 
                         @if($user->status === 'active')
-                            <span class="badge bg-success text-white px-2.5 py-1">Verified & Active</span>. You have full access to all governmental e-services portals listed below.
+                            <span class="badge bg-success text-white px-2.5 py-1">Verified & Active</span>. 
                         @elseif($user->status === 'pending')
                             <span class="badge bg-warning text-dark px-2.5 py-1">Pending Approval</span>. Your application is under review. Portal links will activate once verified by the administrator.
                         @else

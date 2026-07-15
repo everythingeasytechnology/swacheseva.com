@@ -128,7 +128,7 @@
                                     <!-- Impersonate candidate -->
                                     <form action="{{ route('admin.users.impersonate', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-outline-dark rounded d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;" title="Impersonate Candidate Session">
+                                        <button type="submit" class="btn btn-sm btn-outline-dark rounded d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;" title="Impersonate Agent Session">
                                             <i class="bi bi-person-bounding-box"></i>
                                         </button>
                                     </form>
@@ -223,7 +223,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
                 <div class="modal-header border-bottom-0 pb-0">
-                    <h5 class="modal-title fw-bold text-warning" id="editUserModalLabel"><i class="bi bi-pencil-square me-2"></i>Edit Candidate Profile Details</h5>
+                    <h5 class="modal-title fw-bold text-warning" id="editUserModalLabel"><i class="bi bi-pencil-square me-2"></i>Edit Agent Profile Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="editUserForm" method="POST">
