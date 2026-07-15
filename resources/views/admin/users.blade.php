@@ -20,6 +20,18 @@
         </div>
     @endif
 
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4 shadow-sm" role="alert">
+            <strong class="small"><i class="bi bi-exclamation-triangle-fill me-2"></i>Please fix the following validation errors:</strong>
+            <ul class="mb-0 small mt-1">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <!-- Filters and Actions Toolbar -->
     <div class="mb-custom">
         <x-card :hover="false" class="p-3 bg-white border-0 shadow-sm">

@@ -138,7 +138,11 @@ class AdminDashboardController extends Controller
             $data['password'] = Hash::make($request->password);
         }
 
-        $user->update($data);
+        try {
+            $user->update($data);
+        } catch (\Exception $e) {
+            return back()->withErrors(['db_error' => 'Database Update Error: ' . $e->getMessage()])->withInput();
+        }
 
         return back()->with('success', 'Candidate profile updated successfully.');
     }
