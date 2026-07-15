@@ -12,9 +12,7 @@
         <div class="col-lg-8 mb-3 mb-lg-0">
             <div class="p-4 bg-primary-theme text-white rounded-4 shadow-sm position-relative overflow-hidden h-100 d-flex flex-column justify-content-center" style="background: #002984; min-height: 140px;">
                 <!-- Decorative background vector -->
-                <div class="position-absolute end-0 bottom-0 opacity-10" style="font-size: 8rem; transform: translate(10%, 20%); z-index: 1;">
-                    <i class="bi bi-person-workspace text-white"></i>
-                </div>
+            
                 
                 <div class="position-relative" style="z-index: 2;">
                     <h3 class="fw-bold text-white mb-2">Welcome Back, {{ $user->name }}</h3>
@@ -42,7 +40,7 @@
                     <div class="text-start">
                         <h6 class="fw-bold text-primary-theme mb-0">{{ $user->name }}</h6>
                         <small class="text-muted text-uppercase fw-bold" style="font-size: 0.65rem;">
-                            {{ $user->status === 'active' ? 'Verified Candidate' : ($user->status === 'pending' ? 'Pending Verification' : 'Rejected Candidate') }}
+                            {{ $user->status === 'active' ? 'Verified Agent' : ($user->status === 'pending' ? 'Pending Verification' : 'Rejected Agent') }}
                         </small>
                     </div>
                     <a href="{{ route('user.profile') }}" class="btn btn-outline-primary btn-sm ms-auto px-3 rounded-pill" style="font-size: 0.75rem;">Edit Profile</a>
