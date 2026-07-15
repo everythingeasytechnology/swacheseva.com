@@ -31,12 +31,30 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard', compact('stats', 'recentRequests'));
     }
 
-    /**
-     * Display users list view.
-     */
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::where('role', 'user')->latest()->paginate(15);
+        $query = User::where('role', 'user');
+
+        // Apply status filter
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // Apply search filter (name, email, phone, secondary_email, utr_code)
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%")
+                  ->orWhere('secondary_email', 'like', "%{$search}%")
+                  ->orWhere('utr_code', 'like', "%{$search}%");
+            });
+        }
+
+        // Paginate and append query string parameters
+        $users = $query->latest()->paginate(15)->withQueryString();
+
         return view('admin.users', compact('users'));
     }
 

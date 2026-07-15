@@ -38,7 +38,7 @@
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                 <!-- Search & Filters -->
                 <div class="d-flex flex-wrap gap-2 align-items-center flex-grow-1">
-                    <select id="statusFilter" class="form-select bg-light border-0 small" style="max-width: 200px;" onchange="filterUsers()">
+                    <select id="statusFilter" class="form-select bg-light border-0 small" style="max-width: 200px;" onchange="submitFilters()">
                         <option value="">All Verification Status</option>
                         <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Pending Verification</option>
                         <option value="active" {{ request('status') === 'active' ? 'selected' : '' }}>Approved & Active</option>
@@ -46,8 +46,8 @@
                     </select>
                     
                     <div class="input-group" style="max-width: 280px;">
-                        <input type="text" id="searchInput" class="form-control bg-light border-0 small" placeholder="Search by name, email..." onkeyup="filterUsers()">
-                        <button class="btn btn-primary btn-sm px-3" type="button"><i class="bi bi-search"></i></button>
+                        <input type="text" id="searchInput" class="form-control bg-light border-0 small" placeholder="Search by name, email..." value="{{ request('search') }}" onkeypress="if(event.key === 'Enter') submitFilters()">
+                        <button class="btn btn-primary btn-sm px-3" type="button" onclick="submitFilters()"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
 
@@ -591,23 +591,27 @@
             document.getElementById('edit_date_payment').value = user.date_payment || '';
         }
 
-        function filterUsers() {
-            var statusVal = document.getElementById('statusFilter').value.toLowerCase();
-            var searchVal = document.getElementById('searchInput').value.toLowerCase();
-            var rows = document.querySelectorAll('.user-row');
-
-            rows.forEach(function(row) {
-                var matchesStatus = (statusVal === '') || (row.getAttribute('data-status') === statusVal);
-                var matchesSearch = (searchVal === '') || 
-                                    (row.getAttribute('data-name').indexOf(searchVal) > -1) || 
-                                    (row.getAttribute('data-email').indexOf(searchVal) > -1);
-
-                if (matchesStatus && matchesSearch) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+        function submitFilters() {
+            var statusVal = document.getElementById('statusFilter').value;
+            var searchVal = document.getElementById('searchInput').value;
+            
+            var url = new URL(window.location.href);
+            if (statusVal) {
+                url.searchParams.set('status', statusVal);
+            } else {
+                url.searchParams.delete('status');
+            }
+            
+            if (searchVal) {
+                url.searchParams.set('search', searchVal);
+            } else {
+                url.searchParams.delete('search');
+            }
+            
+            // Reset to page 1 on search/filter changes
+            url.searchParams.delete('page');
+            
+            window.location.href = url.toString();
         }
     </script>
 @endsection
