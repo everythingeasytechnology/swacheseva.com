@@ -5,9 +5,9 @@
 @section('content')
 <div class="container-fluid px-0">
     <div class="row g-0 min-vh-100">
-        <!-- Left Side: Theme Graphic -->
-        <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center position-relative overflow-hidden" style="background: #002984;">
-            <img src="{{ asset('login.png') }}" alt="Swacheseva Portal" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+        <!-- Left Side: Theme Graphic Image -->
+        <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center bg-white position-relative overflow-hidden p-0">
+            <img src="{{ asset('login.png') }}" alt="Login Cover Image" style="width: 100%; height: 100vh; object-fit: cover;">
         </div>
 
         <!-- Right Side: Login Form -->

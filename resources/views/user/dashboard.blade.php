@@ -48,6 +48,7 @@
                     <a href="{{ route('user.profile') }}" class="btn btn-outline-primary btn-sm ms-auto px-3 rounded-pill" style="font-size: 0.75rem;">Edit Profile</a>
                 </div>
                 <div class="mt-2 text-start bg-light p-2 rounded-3 small text-muted border border-light" style="font-size: 0.75rem;">
+                    <div class="mb-1"><strong>Swacheseva ID:</strong> <span class="font-monospace text-primary-theme fw-bold">SWAC-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</span></div>
                     <div class="mb-1"><strong>Email:</strong> {{ $user->email }}</div>
                     <div><strong>Phone:</strong> {{ $user->phone }}</div>
                 </div>
@@ -83,8 +84,8 @@
                                 <a href="{{ $user->status === 'active' ? $service->link : '#' }}" 
                                    onclick="{{ $user->status === 'active' ? '' : "alert('Application under review. Portal links will activate once verification is complete.'); return false;" }}" 
                                    target="_blank" 
-                                   class="btn btn-light btn-sm w-100 fw-bold" 
-                                   style="font-size: 0.72rem; border-radius: 8px;">
+                                   class="btn btn-light btn-sm mx-auto fw-bold" 
+                                   style="font-size: 0.72rem; border-radius: 8px; width: 65%;">
                                     <i class="bi bi-box-arrow-up-right me-1"></i> Visit Portal
                                 </a>
                             </div>

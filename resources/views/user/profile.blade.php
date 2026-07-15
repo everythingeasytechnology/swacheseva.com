@@ -26,7 +26,7 @@
     @endif
 
     <!-- Profile Editor Form -->
-    <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data" novalidate>
         @csrf
         
         <div class="row g-custom mb-custom">
@@ -46,6 +46,10 @@
                             <span class="badge bg-danger text-white">Rejected Candidate</span>
                         @endif
                     </p>
+                    <div class="mb-3 bg-light p-2 rounded-3 border border-light">
+                        <!-- <small class="text-muted d-block mb-1" style="font-size: 0.65rem; font-weight: bold; letter-spacing: 0.5px; text-transform: uppercase;">Swacheseva ID</small> -->
+                        <strong class="text-primary-theme font-monospace fs-7">SWAC-{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</strong>
+                    </div>
                     
                     <div class="mb-3">
                         <label for="avatar" class="btn btn-outline-primary btn-sm px-4 rounded-pill" style="font-size: 0.8rem;">
@@ -80,6 +84,11 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link rounded-pill fw-bold text-uppercase" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button" role="tab" aria-controls="bank" aria-selected="false" style="font-size: 0.72rem; padding: 0.5rem 1.2rem;">
                                 <i class="bi bi-credit-card-2-front-fill me-1"></i> Bank & KYC
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill fw-bold text-uppercase" id="other-tab" data-bs-toggle="tab" data-bs-target="#other" type="button" role="tab" aria-controls="other" aria-selected="false" style="font-size: 0.72rem; padding: 0.5rem 1.2rem;">
+                                <i class="bi bi-collection-fill me-1"></i> Other Details
                             </button>
                         </li>
                     </ul>
@@ -377,7 +386,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="pan_no" class="form-label text-muted small fw-bold mb-1">PAN Card Number</label>
-                                    <input type="text" name="pan_no" id="pan_no" class="form-control bg-light border-0 py-2 rounded-3 text-muted" value="{{ old('pan_no', $user->pan_no) }}" required>
+                                    <input type="text" name="pan_no" id="pan_no" class="form-control bg-light border-0 py-2 rounded-3 text-muted" value="{{ old('pan_no', $user->pan_no) }}">
                                 </div>
                             </div>
 
@@ -415,10 +424,91 @@
 
                             <div class="p-3 bg-light rounded-4 border mt-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="declaration_signed" id="declaration_signed" value="1" {{ $user->declaration_signed ? 'checked' : '' }} required>
+                                    <input class="form-check-input" type="checkbox" name="declaration_signed" id="declaration_signed" value="1" {{ $user->declaration_signed ? 'checked' : '' }}>
                                     <label class="form-check-label text-muted small" for="declaration_signed">
                                         I hereby declare that all details provided in this franchisee registry are true, accurate, and correct. I will comply with all Swacheseva Youth Centre guidelines and e-services standards.
                                     </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 5: Other Details -->
+                        <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                            <h5 class="fw-bold mb-3 text-primary-theme"><i class="bi bi-collection-fill me-2"></i>Other Extra Details</h5>
+                            
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="physicall_handicap" class="form-label text-muted small fw-bold mb-1">Physically Handicapped</label>
+                                    <input type="text" name="physicall_handicap" id="physicall_handicap" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('physicall_handicap', $user->physicall_handicap) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="year_of_passing" class="form-label text-muted small fw-bold mb-1">Year of Passing</label>
+                                    <input type="text" name="year_of_passing" id="year_of_passing" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('year_of_passing', $user->year_of_passing) }}">
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="institute_name" class="form-label text-muted small fw-bold mb-1">Institute Name</label>
+                                    <input type="text" name="institute_name" id="institute_name" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('institute_name', $user->institute_name) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="country" class="form-label text-muted small fw-bold mb-1">Country</label>
+                                    <input type="text" name="country" id="country" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('country', $user->country) }}">
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="shop_location" class="form-label text-muted small fw-bold mb-1">Shop Location</label>
+                                    <input type="text" name="shop_location" id="shop_location" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('shop_location', $user->shop_location) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="shop_location_2" class="form-label text-muted small fw-bold mb-1">Shop Location 2</label>
+                                    <input type="text" name="shop_location_2" id="shop_location_2" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('shop_location_2', $user->shop_location_2) }}">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="house_address" class="form-label text-muted small fw-bold mb-1">House Address</label>
+                                <textarea name="house_address" id="house_address" class="form-control bg-light border-0 py-2 rounded-3" rows="2">{{ old('house_address', $user->house_address) }}</textarea>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="alt_occuation_type" class="form-label text-muted small fw-bold mb-1">Alternate Occupation Type</label>
+                                    <input type="text" name="alt_occuation_type" id="alt_occuation_type" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('alt_occuation_type', $user->alt_occuation_type) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="marketing_area" class="form-label text-muted small fw-bold mb-1">Marketing Area</label>
+                                    <input type="text" name="marketing_area" id="marketing_area" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('marketing_area', $user->marketing_area) }}">
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="online_service" class="form-label text-muted small fw-bold mb-1">Online Service</label>
+                                    <input type="text" name="online_service" id="online_service" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('online_service', $user->online_service) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="service" class="form-label text-muted small fw-bold mb-1">Service</label>
+                                    <input type="text" name="service" id="service" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('service', $user->service) }}">
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="bank_account_type" class="form-label text-muted small fw-bold mb-1">Bank Account Type</label>
+                                    <input type="text" name="bank_account_type" id="bank_account_type" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('bank_account_type', $user->bank_account_type) }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="fee" class="form-label text-muted small fw-bold mb-1">Fee</label>
+                                    <input type="number" step="0.01" name="fee" id="fee" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('fee', $user->fee) }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="date_payment" class="form-label text-muted small fw-bold mb-1">Date of Payment</label>
+                                    <input type="date" name="date_payment" id="date_payment" class="form-control bg-light border-0 py-2 rounded-3" value="{{ old('date_payment', $user->date_payment) }}">
                                 </div>
                             </div>
                         </div>

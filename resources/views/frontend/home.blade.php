@@ -38,7 +38,7 @@
                         Swacheseva is dedicated to connecting skilled youth with valuable opportunities for a brighter future.
                     </p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-5">
-                        <a href="{{ route('services') }}" class="btn btn-primary px-4 py-2.5 text-white fw-bold shadow-sm" style="border-radius: 6px; font-size: 0.95rem;">Explore Services</a>
+                        <!-- <a href="{{ route('services') }}" class="btn btn-primary px-4 py-2.5 text-white fw-bold shadow-sm" style="border-radius: 6px; font-size: 0.95rem;">Explore Services</a> -->
                         <a href="{{ route('register') }}" class="btn btn-secondary-theme px-4 py-2.5 text-white fw-bold shadow-sm" style="border-radius: 6px; font-size: 0.95rem;">Apply Now</a>
                     </div>
                     <!-- <div class="row g-3 justify-content-center justify-content-lg-start">

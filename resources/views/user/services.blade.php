@@ -33,8 +33,8 @@
                                 <a href="{{ $user->status === 'active' ? $service->link : '#' }}" 
                                    onclick="{{ $user->status === 'active' ? '' : "alert('Application under review. Portal links will activate once verification is complete.'); return false;" }}" 
                                    target="_blank" 
-                                   class="btn btn-light btn-sm w-100 fw-bold" 
-                                   style="font-size: 0.72rem; border-radius: 8px;">
+                                   class="btn btn-light btn-sm mx-auto fw-bold" 
+                                   style="font-size: 0.72rem; border-radius: 8px; width: 65%;">
                                     <i class="bi bi-box-arrow-up-right me-1"></i> Visit Portal
                                 </a>
                             </div>

@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class UserDashboardController extends Controller
 {
@@ -39,8 +39,8 @@ class UserDashboardController extends Controller
     {
         $user = Auth::user();
 
-        // Validate basic parameters
-        $request->validate([
+        // Validate all parameters (including the 14 new custom fields)
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'secondary_email' => 'nullable|email|max:255',
@@ -80,6 +80,22 @@ class UserDashboardController extends Controller
             'pan_no' => 'nullable|string|max:20',
             'security_pin' => 'nullable|string|max:10',
 
+            // Custom Extra Profile fields
+            'physicall_handicap' => 'nullable|string|max:255',
+            'year_of_passing' => 'nullable|string|max:255',
+            'institute_name' => 'nullable|string|max:255',
+            'shop_location' => 'nullable|string|max:255',
+            'shop_location_2' => 'nullable|string|max:255',
+            'house_address' => 'nullable|string',
+            'country' => 'nullable|string|max:255',
+            'alt_occuation_type' => 'nullable|string|max:255',
+            'marketing_area' => 'nullable|string|max:255',
+            'online_service' => 'nullable|string|max:255',
+            'bank_account_type' => 'nullable|string|max:255',
+            'fee' => 'nullable|numeric',
+            'date_payment' => 'nullable|date',
+            'service' => 'nullable|string|max:255',
+
             // Uploaded Documents validation
             'avatar' => 'nullable|image|max:1024',
             'shop_photo' => 'nullable|image|max:2048',
@@ -106,15 +122,35 @@ class UserDashboardController extends Controller
             }
         }
 
-        // Fill all attributes
-        $data = $request->except(array_merge($filesToUpload, ['_token']));
+        Log::info('Profile Update Request Submitted', [
+            'user_id' => $user->id,
+            'request_keys' => array_keys($request->all())
+        ]);
+
+        // Build data array using only validated fields to prevent unknown column database updates
+        $data = array_diff_key($validated, array_flip($filesToUpload));
         $data = array_merge($data, $uploadedPaths);
-        
-        // Handle declaration checkbox
         $data['declaration_signed'] = $request->has('declaration_signed');
 
-        // Update database record
-        User::where('id', $user->id)->update($data);
+        Log::info('Profile Update Data Formed', [
+            'user_id' => $user->id,
+            'data_keys' => array_keys($data)
+        ]);
+
+        try {
+            // Update database record
+            $affected = User::where('id', $user->id)->update($data);
+            Log::info('Profile Update Successful', [
+                'user_id' => $user->id,
+                'affected_rows' => $affected
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Profile Update Failed', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage()
+            ]);
+            return back()->withErrors(['db_error' => 'Database Update Error: ' . $e->getMessage()])->withInput();
+        }
 
         return back()->with('success', 'Profile updated successfully.');
     }
