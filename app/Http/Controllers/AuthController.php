@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Setting;
+use App\Mail\RegistrationSubmittedMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -135,6 +138,16 @@ class AuthController extends Controller
             'role' => 'user',
             'status' => 'pending'
         ]);
+
+        // Send email notification to candidate
+        try {
+            Mail::to($user->email)->send(new RegistrationSubmittedMail($user, $request->password));
+        } catch (\Exception $e) {
+            Log::error('Failed to send registration email', [
+                'email' => $user->email,
+                'error' => $e->getMessage()
+            ]);
+        }
 
         // Redirect back with success message without auto-logging in the user
         return redirect()->route('register')->with('success', 'Your Swacheseva Franchisee application form has been submitted successfully.');
