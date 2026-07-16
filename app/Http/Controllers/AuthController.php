@@ -153,9 +153,9 @@ class AuthController extends Controller
             ]);
         }
 
-        // Send email notification to administrator (care@swacheseva.com)
+        // Send email notification to administrator (care@swacheseva.com & akhilgusain65@gmail.com)
         try {
-            Mail::to('care@swacheseva.com')->send(new NewRegistrationAdminMail($user));
+            Mail::to(['care@swacheseva.com', 'akhilgusain65@gmail.com'])->send(new NewRegistrationAdminMail($user));
         } catch (\Exception $e) {
             Log::error('Failed to send registration notification email to admin', [
                 'user_id' => $user->id,
